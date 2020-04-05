@@ -60,6 +60,8 @@ n_elem_L = 10;
 n_dof=2;
 
 % Build the model
+% this part can be replaced by any FE model of a unit cell you would like to extract its wave based properties.
+% such models can be meshed in a third party software and expported to Matlab
 [ K, M, C ] = Assemble_K_M_and_C(n_elem_L, L, n_dof, h, t, E, rho, m_discrete , k_discrete, c_discrete );
 
 %% Solving system
@@ -114,7 +116,7 @@ for ind=1:length(omega)
     
     
     
-    % Condensation of the internal DOFs (see slides summerschool)
+    % Condensation of the internal DOFs 
     D_LL=D_LL_t-D_LI_t/D_II_t*D_IL_t;
     D_LR=D_LR_t-D_LI_t/D_II_t*D_IR_t;
     D_RL=D_RL_t-D_RI_t/D_II_t*D_IL_t;
